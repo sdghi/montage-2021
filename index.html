@@ -10,9 +10,24 @@
 		/>
 		<link rel="stylesheet" href="https://use.typekit.net/jod0zwb.css" />
 		<style>
-			:root {
+			body {
 				--color-main: #9a865a;
 				--color-bg: #ffffff;
+				--ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+				--entry-animation: fade 1s var(--ease-out-quint) both,
+					slideUp 0.8s var(--ease-out-quint) both;
+			}
+
+			@keyframes fade {
+				from {
+					opacity: 0;
+				}
+			}
+
+			@keyframes slideUp {
+				from {
+					transform: translate3d(0, 40px, 0);
+				}
 			}
 
 			body {
@@ -45,6 +60,23 @@
 				min-height: 100vh;
 			}
 
+			.background {
+				--bg-height: 376px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+				width: 100%;
+				height: var(--bg-height);
+				max-height: 60vh;
+			}
+
+			.background__image {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
 			.feature {
 				--container-max-width: 277px;
 				--container-top: 84px;
@@ -67,6 +99,12 @@
 				width: var(--video-width);
 				display: block;
 				margin: 0 auto;
+				animation: var(--entry-animation);
+			}
+
+			.feature__content__logo {
+				animation: var(--entry-animation);
+				animation-delay: 0.5s;
 			}
 
 			.feature__content__social {
@@ -82,6 +120,8 @@
 				letter-spacing: 0.08em;
 				line-height: 1;
 				text-transform: uppercase;
+				animation: var(--entry-animation);
+				animation-delay: 1s;
 			}
 
 			.feature__content__social__items {
@@ -90,9 +130,19 @@
 				display: flex;
 				gap: 28px;
 				align-items: center;
+				animation: var(--entry-animation);
+				animation-delay: 1.2s;
+			}
+
+			.feature__content__social__items__item {
+				animation: var(--entry-animation);
+				animation-delay: calc(1.2s + var(--delay));
 			}
 
 			@media (min-width: 768px) {
+				.background {
+					--bg-height: 533px;
+				}
 				.feature {
 					--container-max-width: 337px;
 					--container-top: 101px;
@@ -103,6 +153,10 @@
 			}
 
 			@media (min-width: 1024px) {
+				.background {
+					--bg-height: 683px;
+				}
+
 				.feature {
 					--container-top: 121px;
 					--container-bottom: 104px;
@@ -112,6 +166,10 @@
 			}
 
 			@media (min-width: 1280px) {
+				.background {
+					--bg-height: 406px;
+				}
+
 				.feature {
 					--container-max-width: 216px;
 					--container-top: 56px;
@@ -133,11 +191,15 @@
 	<body>
 		<main>
 			<picture class="background">
-				<source srcset="(min-width: 758px)" src="" />
-				<source srcset="(min-width: 1024px)" src="" />
-				<source srcset="(min-width: 1280px)" src="" />
-				<source srcset="(min-width: 1920px)" src="" />
-				<img class="background__image" src="" alt="" />
+				<source media="(min-width: 1920px)" srcset="./assets/1920.jpg" />
+				<source media="(min-width: 1280px)" srcset="./assets/1280.jpg" />
+				<source media="(min-width: 1024px)" srcset="./assets/ipad-12.9.jpg" />
+				<source media="(min-width: 758px)" srcset="./assets/ipad-10.5.jpg" />
+				<img
+					class="background__image"
+					src="./assets/iphone.jpg"
+					role="presentation"
+				/>
 			</picture>
 			<div class="feature">
 				<video
@@ -173,6 +235,7 @@
 						<div class="feature__content__social__items">
 							<a
 								class="feature__content__social__items__item"
+								style="--delay: 0.2s"
 								href="https://twitter.com/intent/tweet?url=https://www.montagehotels.com/kapaluabay/holidays-2020/&text="
 							>
 								<span class="visually-hidden">Share on Twitter</span>
@@ -186,6 +249,7 @@
 
 							<a
 								class="feature__content__social__items__item"
+								style="--delay: 0.3s"
 								href="https://www.facebook.com/sharer/sharer.php?u=https://www.montagehotels.com/kapaluabay/holidays-2020/"
 							>
 								<span class="visually-hidden">Share on Facebook</span>
@@ -199,6 +263,7 @@
 
 							<a
 								class="feature__content__social__items__item"
+								style="--delay: 0.4s"
 								href="https://pinterest.com/pin/create/button/?url=https://www.montagehotels.com/kapaluabay/holidays-2020/&media=&description="
 							>
 								<span class="visually-hidden">Share on Pinterest</span>
@@ -212,6 +277,7 @@
 
 							<a
 								class="feature__content__social__items__item"
+								style="--delay: 0.5s"
 								href="mailto:?&subject=Montage Hotels Kapalua Bay Holiday 2020&body=https://www.montagehotels.com/kapaluabay/holidays-2020/"
 							>
 								<span class="visually-hidden">Email us</span>
