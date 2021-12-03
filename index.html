@@ -100,6 +100,7 @@
 				display: block;
 				margin: 0 auto;
 				animation: var(--entry-animation);
+				cursor: pointer;
 			}
 
 			.feature__content__logo {
@@ -207,10 +208,7 @@
 					height="208"
 					width="374"
 					poster="./assets/poster.jpg"
-					autoplay
-					muted
 					loop
-					playsinline
 				>
 					<source src="./assets/Montage_Holiday2021.mp4" type="video/mp4" />
 				</video>
@@ -291,5 +289,16 @@
 				</div>
 			</div>
 		</main>
+
+		<script>
+			const videoEl = document.querySelector(".feature__content__video");
+			videoEl.addEventListener("click", () => {
+				if (videoEl.paused) {
+					videoEl.play();
+				} else {
+					videoEl.pause();
+				}
+			});
+		</script>
 	</body>
 </html>
